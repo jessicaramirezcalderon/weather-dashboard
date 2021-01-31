@@ -27,7 +27,7 @@ let cityList = storedList ? JSON.parse(storedList) : [];
 function queries(city) {
     //Obtain current weather data except UV index
     $.ajax({
-        url: 'http://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=imperial&appid=1a08b567ca93f9bd01f2ce3ed7aa48ab',
+        url: 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=imperial&appid=1a08b567ca93f9bd01f2ce3ed7aa48ab',
         type: "GET",
         dataType: "json",
     }).then(function (data) {
