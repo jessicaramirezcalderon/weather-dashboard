@@ -1,27 +1,11 @@
-//grab api items
-//1a08b567ca93f9bd01f2ce3ed7aa48ab
-
-//http://api.openweathermap.org/data/2.5/weather?q=London&units=imperial&appid=1a08b567ca93f9bd01f2ce3ed7aa48ab
-
 //vars to access json data lines 35 and 19
 let myData;
 let data2;
 
 
-const currentCity = $("#top-city");
-const currentDate = $("#top-date");
-const currentWeatherIcon = $("#top-icon");
-const currentTemo = $("#top-temp");
-const currentHum = $("#top-hum");
-const currentWind = $("#top-wind");
-const currentUV = $("#uvindex");
-
-
 //Local storage
 const storedList = localStorage.getItem("list");
 let cityList = storedList ? JSON.parse(storedList) : [];
-
-
 
 
 function queries(city) {
@@ -83,6 +67,25 @@ function queries(city) {
                 currentCon.find(".wind").text("Wind Speed: " + wind + " MPH");
 
                 currentCon.find(".UVI").text("UV Index: " + cUVI);
+
+                //UV Index//
+
+                if (cUVI <= 2) {
+                    currentCon.find(".UVI").addClass("green");
+                }
+
+                else if (cUVI >= 2 && cUVI <= 5) {
+                    currentCon.find(".UVI").addClass("yellow");
+                }
+
+                else if (cUVI >= 6 && cUVI <= 7) {
+                    currentCon.find(".UVI").addClass("orange");
+                }
+
+                else if (cUVI >= 8 && cUVI <= 10) {
+                    currentCon.find(".UVI").addClass("red");
+                }
+
                
             });
         })
