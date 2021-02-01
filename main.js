@@ -54,12 +54,37 @@ function queries(city) {
                 const temp = day.temp.max;
                 const hum = day.humidity;
                 const newDate = new Date(day.dt * 1000);
+            
+                const cName = data.name;
+                const cTemp = data.main.temp;
+                const cHum = data.main.humidity;
+                const wind = data.wind.speed;
+                const cUVI = response.current.uvi;
 
                 const card = $($(".card").get(i));
                 
                 card.find(".temp").text("Temp: " + temp + " F");
 
                 card.find(".card-date").text(newDate.toDateString().substring(0, 15));
+
+
+                card.find(".card-hum").text("Hum: " + hum + "%");
+
+                const currentCon = $($(".current").get(i));
+
+                currentCon.find("#top-city").text("City: " + cName);
+
+                currentCon.find("#top-date").text("Date: " + newDate.toDateString().substring(0, 15));
+
+                currentCon.find(".c-temp").text("Temperature: " + cTemp + " F");
+
+                currentCon.find(".c-hum").text("Humidity: " + cHum + "%");
+
+                currentCon.find(".wind").text("Wind Speed: " + wind + " MPH");
+
+                currentCon.find(".UVI").text("UV Index: " + cUVI);
+
+                //console.log(data.name);
 
                
             });
