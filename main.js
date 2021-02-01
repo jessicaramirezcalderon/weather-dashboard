@@ -59,6 +59,7 @@ function queries(city) {
                 const cTemp = data.main.temp;
                 const cHum = data.main.humidity;
                 const wind = data.wind.speed;
+
                 const cUVI = response.current.uvi;
 
                 const card = $($(".card").get(i));
@@ -66,7 +67,6 @@ function queries(city) {
                 card.find(".temp").text("Temp: " + temp + " F");
 
                 card.find(".card-date").text(newDate.toDateString().substring(0, 15));
-
 
                 card.find(".card-hum").text("Hum: " + hum + "%");
 
@@ -83,9 +83,6 @@ function queries(city) {
                 currentCon.find(".wind").text("Wind Speed: " + wind + " MPH");
 
                 currentCon.find(".UVI").text("UV Index: " + cUVI);
-
-                //console.log(data.name);
-
                
             });
         })
@@ -93,7 +90,6 @@ function queries(city) {
     });//end of initial query function
 
 }
-
 
 
 //Limit characters to letters only
@@ -131,14 +127,23 @@ $("#search-btn").click(function (e) {
     //Push the input into local storage
     cityList.push(inputVal);
     localStorage.setItem("list", JSON.stringify(cityList));
+    const listGroup = $(".list-group-item");
 
-    $(".list-group").append(`<li class="list-group-item list-group-item-warning">${inputVal}</li>`);
+    //Limit the number of logs to 5 to avoid breaking the layout
+
+    if (listGroup.length > 4) {
+        $(listGroup.get(4)).remove();
+    }
+
+    $(".list-group").prepend(`<li class="list-group-item list-group-item-warning">${inputVal}</li>`);
 
 });
 
-cityList.forEach((citySearch) => {
+cityList.reverse().slice(0, 5).forEach((citySearch) => {
     $(".list-group").append(`<li class="list-group-item list-group-item-warning">${citySearch}</li>`);
-    
 
 });
+
+
+
 

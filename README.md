@@ -1,5 +1,5 @@
 # Weather Dashboard
-This application allows the user to find the current and five day forecast weather for any city. Once a city is searched, the value is stored on the page to remind the user of which cities she has searched for before. 
+This application allows the user to find the current and five day forecast weather for any city. Once a city is searched, the value is stored on the page to remind the user of which cities she has searched for before. The city log is limited to five entries to avoid breaking the page layout with unlimited logs
 
 ## Technology
 
